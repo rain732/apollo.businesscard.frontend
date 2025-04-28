@@ -1,0 +1,39 @@
+.logo-container {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #0d6efd;
+    padding: 10px;
+    animation: logoFadeIn 1.5s ease;
+  }
+  
+  .rain-icon {
+    font-size: 2rem;
+    animation: rainBounce 2s infinite;
+  }
+  
+  .logo-text {
+    letter-spacing: 1px;
+  }
+  
+  /* Animations */
+  @keyframes logoFadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes rainBounce {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(5px);
+    }
+  }
+  

@@ -1,0 +1,62 @@
+<div class="card">
+    <div class="table-responsive">
+      <table class="table" #tableToExport>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Birthdate</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (businessCard of getBusinessCards ; track $index) {
+          <tr>
+            <td>{{ businessCard.name }}</td>
+            <td>
+                {{businessCard.genderName}}
+            </td>
+            <td>
+              {{ businessCard.dateOfBirth | formatDate}}
+            </td>
+            <td>
+                {{ businessCard.email }}
+              </td>
+              <td>
+                {{ businessCard.phone }}
+              </td>
+              <td>
+                {{ businessCard.address }}
+              </td>
+            <td>
+              <div class="d-flex">
+                <button
+                  #deleteButton
+                  class="btn btn-danger m-1"
+                  title="Delete"
+                  (click)="deleteButton.blur(); handleDeleteEvent(businessCard.id)"
+                >
+                Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+          }@empty {
+          <tr class="center">
+            @if(isFirstLoad) {
+            <td colspan="7"> Nothing Found </td>
+            } @else {
+            <td colspan="7">No Result Found</td>
+            }
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <hr />
+    <app-business-cards-pagination></app-business-cards-pagination>
+  </div>
+  

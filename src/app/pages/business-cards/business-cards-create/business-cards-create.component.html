@@ -1,0 +1,162 @@
+<app-model-dialog
+  [title]="businessCardModalTitle"
+  [buttonTitle]="modalBttonTitle"
+  modalId="addbusinessCardModal"
+  (submitEmitter)="handleModalSubmit()"
+  (closeEmitter)="handleModalClose()"
+  #businessCardModal
+>
+  <div class="card-body p-4">
+    @if(businessCardForm.invalid){
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              <label class="col-form-label required" for="attachment"> File </label>
+            </div>
+            <div class="row">
+              <div class="col">
+                <app-file-upload
+                #fileUpload
+                  [fileTypeToShowMsg]="['XML, CSV']"
+                  [fileType]="[attachmentTypeEnum.csv, attachmentTypeEnum.xml]"
+                  (fileChangedEmitter)="onEmittedNewFile($event)"
+                ></app-file-upload>
+              </div>
+            </div>
+          </div>
+        </div>
+    }
+    @if(!!businessCardForm){
+    <form [formGroup]="businessCardForm" class="form form-horizontal">
+      <div class="row">
+        <div class="col-6">
+          <label
+            class="col-form-label required"
+            [class.is-invalid]="
+              isSubmitted && businessCardForm.get('name')?.invalid
+            "
+          >
+            Name
+          </label>
+          <p>
+            {{businessCardForm.get('name')?.value}}
+          </p>
+          @if(businessCardForm.get('name')?.hasError('required') &&
+          isSubmitted){
+          <small class="text-danger pt-1">  Name is required</small>
+          }
+        </div>
+        <div class="col-6">
+            <label
+              class="col-form-label required"
+              [class.is-invalid]="
+                isSubmitted && businessCardForm.get('email')?.invalid
+              "
+            >
+              Email
+            </label>
+            <p>
+                {{businessCardForm.get('email')?.value}}
+              </p>
+            @if(businessCardForm.get('email')?.hasError('required') &&
+            isSubmitted){
+            <small class="text-danger pt-1">Email is required</small>
+            }
+          </div>
+          <div class="col-6">
+            <label
+              class="col-form-label required"
+              [class.is-invalid]="
+                isSubmitted && businessCardForm.get('phone')?.invalid
+              "
+            >
+              Phone
+            </label>
+            <p>
+                {{businessCardForm.get('phone')?.value}}
+              </p>
+            @if(businessCardForm.get('phone')?.hasError('required') &&
+            isSubmitted){
+                <small class="text-danger pt-1">Phone is required</small>
+            }@else if(businessCardForm.get('phone')?.hasError('maxlength') &&
+            isSubmitted){
+                <small class="text-danger pt-1">Phone is has max len 10</small>
+            }
+          </div>
+          <div class="col-6">
+            <label
+              class="col-form-label required"
+              [class.is-invalid]="
+                isSubmitted && businessCardForm.get('dateOfBirth')?.invalid
+              "
+            >
+              Birthdate
+            </label>
+            <p>
+                {{businessCardForm.get('dateOfBirth')?.value}}
+              </p>
+            @if(businessCardForm.get('dateOfBirth')?.hasError('required') &&
+            isSubmitted){
+            <small class="text-danger pt-1">Birthdate is required</small>
+            }
+          </div>
+          <div class="col-6">
+            <label
+              class="col-form-label required"
+              [class.is-invalid]="
+                isSubmitted && businessCardForm.get('address')?.invalid
+              "
+            >
+              Address
+            </label>
+            <p>
+                {{businessCardForm.get('address')?.value}}
+              </p>
+            @if(businessCardForm.get('address')?.hasError('required') &&
+            isSubmitted){
+            <small class="text-danger pt-1">Address is required</small>
+            }
+          </div>
+          <div class="col-6">
+            <label
+              class="col-form-label required"
+              [class.is-invalid]="
+                isSubmitted && businessCardForm.get('gender')?.invalid
+              "
+            >
+              Gender
+            </label>
+            <p>
+                {{businessCardForm.get('gender')?.value}}
+              </p>
+            @if(businessCardForm.get('gender')?.hasError('required') &&
+            isSubmitted){
+            <small class="text-danger pt-1">Gender is required</small>
+            }
+          </div>
+
+          <div class="col-6">
+            <label
+              class="col-form-label required"
+              [class.is-invalid]="
+                isSubmitted && businessCardForm.get('photo')?.invalid
+              "
+            >
+              Photo
+            </label>
+            @if(businessCardForm.get('photo')?.value){
+                <div>
+                    <img src="{{businessCardForm.get('photo')?.value}}" alt=""  width="150" height="150">
+                </div>
+            }
+            @if(businessCardForm.get('photo')?.hasError('required') &&
+            isSubmitted){
+            <small class="text-danger pt-1">Photo is required</small>
+            }
+          </div>
+
+      </div>
+    </form>
+    }
+  </div>
+</app-model-dialog>

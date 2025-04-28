@@ -1,0 +1,41 @@
+<ng-template id="modalDialog" #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ title }}</h4>
+  </div>
+  <div>
+    <ng-content></ng-content>
+    @if (errors.length > 0) {
+    <div class="alert alert-danger px-2 pt-1 pb-1" role="alert">
+      <ul>
+        @for (error of errors; track $index) {
+        <li>{{ error }}</li>
+
+        }
+      </ul>
+    </div>
+    }
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-{{
+        submitButtonColor != null ? submitButtonColor : 'primary'
+      }}"
+      (click)="submit()"
+      [disabled]="isDisabled"
+      [title]="buttonTitle"
+      [hidden]="isHidden"
+    >
+      {{ buttonTitle }}
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="close();closeBtn.blur();"
+      [title]="closeButtonTitle"
+      #closeBtn
+    >
+      {{closeButtonTitle}}
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,12 @@
+<ng-template id="confirmlDialog" #confirm let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+	</div>
+	<div class="modal-body">
+		<ng-content></ng-content>
+	</div>
+	<div class="modal-footer">
+    <button #submitBtn type="button" class="btn btn-danger" (click)="submit();submitBtn.blur()">{{buttonTitle}}</button>
+    <button #closeBtn type="button" class="btn btn-secondary" (click)="closeBtn.blur();d('Cross click')" >اغلاق</button>
+	</div>
+</ng-template>

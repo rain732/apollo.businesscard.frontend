@@ -1,0 +1,40 @@
+<!-- <div class="row breadcrumbs-top">
+  <div class="col-12">
+    <div class="d-flex justify-content-between">
+      <div class="justify-content-start col-lg-8 col-md-8 col-sm-12">
+        <h2 class="content-header-title float-start mb-0">
+          {{ breadcrumbs[breadcrumbs.length - 1].label }}
+        </h2>
+        <div class="breadcrumb-wrapper">
+          <ol class="breadcrumb">
+            <li
+              class="breadcrumb-item"
+              *ngFor="let breadcrumb of breadcrumbs"
+              (click)="navigate(breadcrumb.url)"
+            >
+              <ng-template
+                [ngIf]="breadcrumb.label == 'الشاشة الرئيسية'"
+                [ngIfElse]="childRoute"
+              >
+                <i
+                  data-feather="home"
+                  routerLinkActive="router-link-active"
+                ></i>
+              </ng-template>
+              <ng-template #childRoute>
+                <span routerLinkActive="router-link-active">
+                  {{ breadcrumb.label }}
+                </span>
+              </ng-template>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="justify-content-end">
+        <span>
+          <app-back-button></app-back-button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div> -->

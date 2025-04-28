@@ -1,0 +1,30 @@
+<div>
+  <ng-template [ngIf]="!file" [ngIfElse]="deleteUploadedFile">
+    <div class="d-flex flex-column">
+      <div class="area">
+        <div class="droparea">
+          <span style="position: absolute; text-align: center">  Drop File here or Press to upload</span>
+
+            <input #myFile  type="file" class="hiddeninput" (change)="fileUploaded($event)"
+            accept="**" />
+        </div>
+      </div>
+      <ul class="pt-1">
+        <li><small>Only files of type : {{fileTypeToShowMsg.join(", ")}}</small></li>
+        <li><small>File Size should be 1 MB Max </small></li>
+      </ul>
+    </div>
+  </ng-template>
+
+  <ng-template #deleteUploadedFile>
+    <div class="file-upload-content">
+      <span class="fs-6 fw-bolder text-truncate" [ngbTooltip]="file.name">{{ file.name }}</span>
+      <div class="image-title-wrap">
+        <button type="button btn-sm" (click)="removeUpload()" class="remove-image">
+          <!-- <i-feather name="trash"></i-feather> -->
+          <span class="image-title">Remove</span>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

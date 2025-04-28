@@ -1,0 +1,10 @@
+.home {
+  width: 1rem;
+  height: auto;
+  color:green;
+  cursor: pointer;
+}
+
+.breadcrumb-item {
+    cursor: pointer;
+}

@@ -1,0 +1,129 @@
+<div class="card mt-2">
+  <div class="card-header">
+    <h2>Seatch and Filter</h2>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-4 col-sm-12">
+        <label class="form-label" for="statusSelect">Gender</label>
+        <select
+          class="form-select"
+          id="statusSelect"
+          [(ngModel)]="filters.genderId"
+          (change)="handleGenderSelected($event)"
+        >
+          <option [value]="null">All</option>
+          <option [value]="genderEnum.Male">Male</option>
+          <option [value]="genderEnum.Female">Female</option>
+        </select>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <label class="form-label" for="search-by-name"> Name</label>
+        <input
+          type="text"
+          id="search-by-name"
+          class="form-control"
+          maxlength="50"
+          placeholder="Name"
+          [(ngModel)]="filters.name"
+          (drag)="$event.preventDefault()"
+          (drop)="$event.preventDefault()"
+          arabicWithSpaces
+        />
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <label class="form-label" for="search-by-email"> Email</label>
+        <input
+          type="text"
+          id="search-by-email"
+          class="form-control"
+          maxlength="50"
+          placeholder="Email"
+          [(ngModel)]="filters.email"
+          (drag)="$event.preventDefault()"
+          (drop)="$event.preventDefault()"
+          emailChars
+        />
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <label class="form-label" for="search-by-phone"> Phone Number </label>
+        <input
+          type="text"
+          id="search-by-phone"
+          class="form-control"
+          maxlength="10"
+          placeholder="Phone"
+          [(ngModel)]="filters.phone"
+          (drag)="$event.preventDefault()"
+          (drop)="$event.preventDefault()"
+          numbersOnly
+        />
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <label class="form-label" for="search-by-date"> Date of Birth </label>
+        <input
+          type="date"
+          id="search-by-date"
+          class="form-control"
+          placeholder="Date of Birth"
+          [(ngModel)]="filters.dateOfBirth"
+          (drag)="$event.preventDefault()"
+          (drop)="$event.preventDefault()"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col">
+        <button
+          #addunit
+          class="btn btn-primary m-25"
+          title="Add Business Card"
+          type="button"
+          (click)="addunit.blur(); handleCreateBusinessCardModalOpen()"
+        >
+          Add Business Card
+        </button>
+        <button
+          #exportCSV
+          class="btn btn-primary m-1"
+          title="Export to Excel"
+          type="button"
+          (click)="exportCSV.blur(); exportTable(exportEnum.Excel)"
+        >
+          Export to Excel
+        </button>
+        <button
+          #exportCSV
+          class="btn btn-primary m-1"
+          title="Export to Excel"
+          type="button"
+          (click)="exportCSV.blur(); exportTable(exportEnum.XML)"
+        >
+          Export to XML
+        </button>
+      </div>
+      <div class="col-auto">
+        <button
+          type="button"
+          id="search-button"
+          class="btn btn-primary m-1"
+          (click)="handleSearch()"
+          title="Search"
+        >
+          Search
+        </button>
+        <button
+          type="button"
+          id="search-button"
+          class="btn btn-outline-secondary m-1"
+          (click)="onReset()"
+          title="Clear"
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

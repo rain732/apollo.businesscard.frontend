@@ -1,0 +1,58 @@
+.home-container {
+    animation: fadeInUp 1s ease-out;
+    background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+  }
+  
+  .welcome-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #0d6efd;
+    animation: slideIn 1.2s ease-out;
+  }
+  
+  .name-text {
+    font-size: 2rem;
+    color: #343a40;
+    animation: slideIn 1.4s ease-out;
+  }
+  
+  .description-text {
+    font-size: 1.2rem;
+    color: #6c757d;
+    animation: fadeIn 1.6s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
